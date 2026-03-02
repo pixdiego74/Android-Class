@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 const GeneradorSaludos = () => {
   //State definition
@@ -20,23 +20,41 @@ const GeneradorSaludos = () => {
     setName('');
     setAge('');
   }
+  
   //Structure
   return (
-    <View style={styles.container}></View>
+    <View style={styles.container}>
+      <Text style={styles.title}>Ingresa tus datos</Text>
+
+      <TextInput
+      style={styles.input}
+      placeholder="Escribe tu nombre"
+      value={name}
+      onChangeText={setName} // Actualizar el estado/espacio de memoria cada vez que entra un caracteren el input
+      autoCapitalize="words" //Pone en mayuscula la primer letra
+      />
+
+            <TextInput
+      style={styles.input}
+      placeholder="Escribe tu edad"
+      value={age}
+      onChangeText={setAge} // Actualizar el estado/espacio de memoria cada vez que entra un caracteren el input
+      keyboardType="numeric"
+      maxLength={3}
+      />
+
+      <Button
+      title="Saludar"
+      onPress={handleBtnHello}
+      color="#00bfff"
+      />
+    </View>
   )
 }
 
 export default function Index() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+    GeneradorSaludos
   );
 }
 
