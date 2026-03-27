@@ -58,3 +58,5 @@ export const useContact = () => {
         handleContact
     }
 }
+
+export default useContact;

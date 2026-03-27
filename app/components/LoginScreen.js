@@ -12,8 +12,11 @@ const LoginScreen = () => {
             Alert.alert ("Error", "Correo no valido");
             return;
         }
+
+        // Sanitizar email para usar como key en SecureStore
+        const sanitizedKey = email.replace(/[@.]/g, '_');
         //Guardar datos sensibles de forma segura
-        await StorageService.saveCredentials(email, token);
+        await StorageService.saveToken(sanitizedKey, token);
 
         //Guardar datos generales
         await StorageService.setItem('last_login', new Date().toString());
